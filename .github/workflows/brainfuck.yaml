@@ -1,0 +1,35 @@
+name: Verify Brainfuck Projects
+
+on:
+  pull_request:
+    paths:
+      - 'b/brainfuck/**/*.b'
+      - 'b/brainfuck/**/*.bf'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Check line count limit
+        run: |
+          for file in $(find b/brainfuck -type f \( -name "*.bf" -o -name "*.b" \)); do
+            linecount=$(grep -v '^\s*$' "$file" | grep -v '^\s*//' | wc -l)
+            echo "$file: $linecount lines"
+            if [ $linecount -gt 50 ]; then
+              echo "Error: $file exceeds the 50 line limit (has $linecount lines)"
+              exit 1
+            fi
+          done
+
+      - name: Install Brainfuck interpreter
+        run: sudo apt-get update && sudo apt-get install -y bf
+
+      - name: Run Brainfuck files
+        run: |
+          for file in b/brainfuck/**/*.b; do
+            echo "Running $file"
+            echo "A" | bf "$file" || { echo "Error in $file"; exit 1; }
+          done

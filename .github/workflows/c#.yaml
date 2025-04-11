@@ -1,0 +1,38 @@
+name: Verify C# Projects
+
+on:
+  pull_request:
+    paths:
+      - 'c/c#/**'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+          
+      - name: Check line count limit
+        run: |
+          for file in $(find c/c# -name "*.cs"); do
+            linecount=$(grep -v '^\s*$' "$file" | grep -v '^\s*//' | wc -l)
+            echo "$file: $linecount lines of code"
+            if [ $linecount -gt 50 ]; then
+              echo "Error: $file exceeds the 50 line limit (has $linecount lines)"
+              exit 1
+            fi
+          done
+          
+      - name: Build and Run Projects
+        run: |
+          for d in c/c#/*; do
+            if [ -d "$d" ] && [ -n "$(find "$d" -name "*.csproj" -type f -print -quit)" ]; then
+              echo "Building project in $d"
+              dotnet build "$d"
+              dotnet run --project "$d"
+            fi
+          done
