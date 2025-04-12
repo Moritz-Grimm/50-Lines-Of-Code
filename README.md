@@ -1,7 +1,7 @@
 # 50-Lines-Of-Code
 
 ## What is this project about?
-The goal of '50-Lines-Of-Code' is to create a large repository filled with creative and small projects, each limited to 50 lines of code. This encourages concise and efficient coding while providing inspiration for quick, executable programs in different languages.  
+The goal of '50-Lines-Of-Code' is to create a large repository filled with creative and small projects, each limited to 50 lines of code. This encourages concise and efficient coding while providing inspiration for quick, executable programs in different languages.<br>
 This project was inspired by [leachim6/hello-world](https://github.com/leachim6/hello-world)
 
 ---
