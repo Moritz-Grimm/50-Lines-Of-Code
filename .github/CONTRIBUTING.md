@@ -15,6 +15,7 @@ Here’s how to submit your mini project:
 - [ ] Fill in a `README.md` inside your project folder with the help of the template 
 - [ ] Update the [README](../README.md) language index with your language and project
 - [ ] If you're adding a project in a language that doesn't have any tests yet, please create a new test
+- [ ] Update the .gitignore file to exclude unwanted files (such as build artifacts, temporary files, or IDE-specific configurations) from being committed with your project
 
 ---
 
