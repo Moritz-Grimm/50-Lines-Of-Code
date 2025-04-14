@@ -35,7 +35,7 @@ jobs:
 
       - name: Run Brainfuck files
         run: |
-          for file in b/brainfuck/**/*.b; do
+          for file in $(find b/brainfuck -type f \( -name "*.bf" -o -name "*.b" \)); do
             echo "Running $file"
-            echo "A" | bf "$file" || { echo "Error in $file"; exit 1; }
+            echo "A" | beef "$file" || { echo "Error in $file"; exit 1; }
           done
