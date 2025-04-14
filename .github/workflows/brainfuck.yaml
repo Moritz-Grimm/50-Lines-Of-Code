@@ -6,6 +6,7 @@ permissions:
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened]
     paths:
       - 'b/brainfuck/**/*.b'
       - 'b/brainfuck/**/*.bf'
@@ -30,7 +31,7 @@ jobs:
           done
 
       - name: Install Brainfuck interpreter
-        run: sudo apt-get update && sudo apt-get install -y bf
+        run: sudo apt-get install -y beef
 
       - name: Run Brainfuck files
         run: |
