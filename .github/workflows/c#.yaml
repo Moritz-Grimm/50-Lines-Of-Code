@@ -6,6 +6,7 @@ permissions:
 
 on:
   pull_request:
+    branches: [ "main" ]
     types: [opened, synchronize, reopened]
     paths:
       - 'c/c#/**'
@@ -37,8 +38,12 @@ jobs:
         run: |
           for d in c/c#/*; do
             if [ -d "$d" ] && [ -n "$(find "$d" -name "*.csproj" -type f -print -quit)" ]; then
+              if grep -r -q "Console.ReadLine()" "$d"; then
+                echo "Skipping project in $d (contains Console.ReadLine())"
+                continue
+              fi
               echo "Building project in $d"
-              dotnet build "$d"
-              dotnet run --project "$d"
+              dotnet build "$d" || { echo "Build failed in $d"; exit 1; }
+              dotnet run --project "$d" || { echo "Run failed in $d"; exit 1; }
             fi
           done
