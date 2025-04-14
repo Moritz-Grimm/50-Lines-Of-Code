@@ -1,0 +1,40 @@
+name: python simple_number_input.py test
+
+on:
+  pull_request:
+    branches: [ "main" ]
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'b/brainfuck/**/*.b'
+      - 'b/brainfuck/**/*.bf'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Run Python script
+        run: |
+          echo "42" | python simple_number_input.py
+
+      - name: Check output
+        run: |
+          output=$(echo "42" | python simple_number_inputt.py)
+          if [[ "$output" != *"You chose 42."* ]]; then
+            echo "Test failed: Output is not correct"
+            exit 1
+          fi
+          echo "Test passed"
