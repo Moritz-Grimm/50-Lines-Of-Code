@@ -8,6 +8,7 @@ on:
   pull_request:
     paths:
       - 'p/python/**/*.py'
+  workflow_dispatch:
 
 jobs:
   verify:
