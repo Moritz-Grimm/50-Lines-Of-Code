@@ -7,11 +7,11 @@ This project was inspired by [leachim6/hello-world](https://github.com/leachim6/
 ---
 
 ## 📤 Submitting
-Please make sure to review the [CONTRIBUTING.md](./.github/CONTRIBUTING.md) for the detailed contribution guidelines.
+Please make sure to review the [CONTRIBUTING.md](./CONTRIBUTING.md) for the detailed contribution guidelines.
 
 1. Fork the repository
 2. Add your project in the appropriate language folder.
-3. Create a Pull Request with all the requirements in the [CONTRIBUTING.md](./.github/CONTRIBUTING.md) checked
+3. Create a Pull Request with all the requirements in the [CONTRIBUTING.md](./CONTRIBUTING.md) checked
 
 ---
 
