@@ -1,5 +1,9 @@
 name: Verify C# Projects
 
+permissions:
+  contents: read
+  pull-requests: read
+
 on:
   pull_request:
     paths:
