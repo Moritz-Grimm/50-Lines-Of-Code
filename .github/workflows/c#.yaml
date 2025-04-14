@@ -6,6 +6,7 @@ permissions:
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened]
     paths:
       - 'c/c#/**'
   workflow_dispatch:
