@@ -2,11 +2,8 @@ name: python simple_number_input.py test
 
 on:
   pull_request:
-    branches: [ "main" ]
-    types: [opened, synchronize, reopened]
     paths:
-      - 'b/brainfuck/**/*.b'
-      - 'b/brainfuck/**/*.bf'
+      - 'p/python/simple_number_input/*.py'
   workflow_dispatch:
 
 jobs:

@@ -44,7 +44,11 @@ jobs:
       
       - name: Run Python files
         run: |
-          for file in p/python/**/*.py; do
+          for file in $(find p/python -name "*.py"); do
+            if grep -q "input(" "$file"; then
+              echo "Skipping $file (contains input())"
+              continue
+            fi
             echo "Running $file"
             python "$file" || { echo "Error in $file"; exit 1; }
           done

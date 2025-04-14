@@ -46,10 +46,11 @@ When writing your own test, please follow this steps
 2. Give it a name based on this => ``language filename 'test'``
 3. Always add this restrictions: 
     ``on:
-        pull_request: 
-            branches: [ "main" ] 
-            types: [opened, synchronize, reopened] 
+        pull_request:
+            paths: 
+                - 'project path here'
         workflow_dispatch:``
+4. 
 
 Also, here is a example on how to do it correctly
 - [Python simple_number_input.yaml](/.github/workflows/python_simpleNumberInput.yaml)
