@@ -25,11 +25,11 @@ jobs:
 
       - name: Run Python script
         run: |
-          echo "42" | python simple_number_input.py
+          echo "42" | python p/python/simple_number_input/simple_number_input.py
 
       - name: Check output
         run: |
-          output=$(echo "42" | python simple_number_inputt.py)
+          output=$(echo "42" | python p/python/simple_number_input/simple_number_input.py)
           if [[ "$output" != *"You chose 42."* ]]; then
             echo "Test failed: Output is not correct"
             exit 1
